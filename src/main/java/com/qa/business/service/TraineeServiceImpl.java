@@ -23,6 +23,16 @@ public class TraineeServiceImpl implements TraineeService{
 	public String deleteTrainee(int traineeId) {
 	return repo.deleteTrainee(traineeId);
 	}
+
+	@Override
+	public String getAllTrainees() {
+		return repo.getAllTrainees();
+	}
+
+	@Override
+	public String updateTrainee(int traineeId, String trainee) {
+		return repo.updateTrainee(traineeId, trainee);
+	}
 	
 	
 

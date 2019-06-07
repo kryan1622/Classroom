@@ -29,11 +29,20 @@ public class TraineeController {
 		return service.createTrainee(trainee);
 	}
 	
-	@Path("/deleteTrainee{TraineeId}")
+	@Path("/deleteTrainee{traineeId}")
 	@DELETE
 	@Produces({"application/json"})
 	public String deleteTrainee(@PathParam("traineeId") int traineeId) {
 		return service.deleteTrainee(traineeId);
 	}
+	
+	@Path("/getAllTrainees")
+	@GET
+	@Produces({"application/json"})
+	public String getAllTrainees() {
+		return service.getAllTrainees();
+	}
+
+
 
 }

@@ -28,4 +28,16 @@ public class ClassroomServiceImpl implements ClassroomService{
 	public String deleteClassroom(int classroomId) {
 	return repo.deleteClassroom(classroomId);
 }
+
+
+	@Override
+	public String getAllClassroom() {
+		return repo.getAllClassrooms();
+	}
+
+
+	@Override
+	public String updateClassroom(int classroomId, String classroom) {
+		return repo.updateClassroom(classroomId, classroom);
+	}
 }
