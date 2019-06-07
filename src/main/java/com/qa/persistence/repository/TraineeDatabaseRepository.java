@@ -49,7 +49,7 @@ public class TraineeDatabaseRepository implements TraineeRepository{
 	@Override
 	@Transactional(SUPPORTS)
 	public String getAllTrainees() {
-		Query query = manager.createQuery("SELECT a FROM Trainee");
+		Query query = manager.createQuery("SELECT a FROM Trainee a");
 		return j1.getJSONForObject(query.getResultList());
 	}
 	
