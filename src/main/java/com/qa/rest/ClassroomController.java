@@ -1,6 +1,7 @@
 package com.qa.rest;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -18,5 +19,12 @@ public class ClassroomController {
 	@Produces({"application/json"})
 	public String findClassroom(@PathParam("classroomId") int classroomId) {
 		return service.findClassroom(classroomId);
+	}
+	
+	@Path("/createTrainee")
+	@POST
+	@Produces({"application/json"})
+	public String createClassroom(String trainee) {
+		return service.createClassroom(trainee);
 	}
 }

@@ -15,4 +15,11 @@ public class ClassroomServiceImpl implements ClassroomService{
 		return repo.findClassroom(classroomId);
 	}
 
+
+	@Override
+	public String createClassroom(String classroom) {
+		return repo.createClassroom(classroom);
+		
+
+}
 }

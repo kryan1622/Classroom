@@ -13,6 +13,11 @@ public class TraineeServiceImpl implements TraineeService{
 	public String findTrainee(int traineeId) {
 		return repo.findTrainee(traineeId);
 	}
+
+	@Override
+	public String createTrainee(String trainee) {
+		return repo.createTrainee(trainee);
+	}
 	
 	
 

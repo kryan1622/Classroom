@@ -7,7 +7,7 @@ package com.qa.persistence.repository;
 	import javax.persistence.PersistenceContext;
 	import javax.transaction.Transactional;
 	import com.qa.persistance.domain.Classroom;
-	import com.qa.util.JSONUtil;
+    import com.qa.util.JSONUtil;
 
 
 	@Transactional(SUPPORTS)
@@ -23,6 +23,14 @@ package com.qa.persistence.repository;
 		@Override
 		public String findClassroom(int classroomId) {
 			return j1.getJSONForObject(manager.find(Classroom.class, classroomId));
+		}
+
+		@Override
+		@Transactional(REQUIRED)
+		public String createClassroom(String classroom) {
+			Classroom aClassroom = j1.getObjectForJSON(classroom, Classroom.class);
+	        manager.persist(aClassroom);
+	        return "{\"message\": \"Classroom has been successfully added\"}";	
 		}
 
 	}
