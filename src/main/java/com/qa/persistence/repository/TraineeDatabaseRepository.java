@@ -18,8 +18,17 @@ public class TraineeDatabaseRepository implements TraineeRepository{
 	private JSONUtil j1;
 	
 	@Override
+	@Transactional(SUPPORTS)
 	public String findTrainee(int traineeId) {
 		return j1.getJSONForObject(manager.find(Trainee.class, traineeId));
+	}
+
+	@Override
+	@Transactional(REQUIRED)
+	public String createTrainee(String trainee) {
+    Trainee aTrainee = j1.getObjectForJSON(trainee, Trainee.class);
+    manager.persist(aTrainee);
+    return "{\"message\": \"Trainee has been successfully added\"}";
 	}
 		
 }
