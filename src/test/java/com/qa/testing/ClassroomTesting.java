@@ -3,6 +3,7 @@ package com.qa.testing;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.qa.persistance.domain.Classroom;
@@ -21,13 +22,15 @@ public class ClassroomTesting {
 	class2 = new Classroom(2, "Chester Gardner");
 	}
 	
+	
+	@Ignore
 	@Test
 	public void addClassroomTest() {
 	cmp.createClassroom("{\"classroomId\":1,\"trainerName\":\"Matt Hunt\"}");
 	assertEquals("Matt Hunt", cmp.getClassroomMap().get(1).getTrainerName());
 	}
 	
-	
+	@Ignore
 	@Test
 	public void add2ClassroomTest() {
 		cmp.createClassroom("{\"classroomId\":1,\"trainerName\":\"Matt Hunt\"}");
