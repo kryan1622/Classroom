@@ -5,8 +5,10 @@ package com.qa.persistence.repository;
 	import javax.inject.Inject;
 	import javax.persistence.EntityManager;
 	import javax.persistence.PersistenceContext;
-	import javax.transaction.Transactional;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 	import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 import com.qa.util.JSONUtil;
 
 
@@ -44,6 +46,27 @@ import com.qa.util.JSONUtil;
 	        }
 	        return "{\"message\": \"No account found with this id.\"}";
 		}
+		
+		@Override
+		@Transactional(SUPPORTS)
+		public String getAllClassrooms() {
+			Query query = manager.createQuery("SELECT a FROM Classroom");
+			return j1.getJSONForObject(query.getResultList());
+		}
+		
+		
+		public String updateClassroom(int classroomId ,String classroom) {
+			Classroom classroomDetails = j1.getObjectForJSON(classroom, Classroom.class);
+			Classroom oldClassroom = manager.find(Classroom.class, classroom);
+			if (oldClassroom!= null) {
+				oldClassroom.setTrainerName(classroomDetails.getTrainerName());
+				manager.persist(oldClassroom);
+			}
+			return "{\"message\": \"Trainee sucessfully updated\"}"; 
+		}
+		
+		
+		
 		}
 
 	

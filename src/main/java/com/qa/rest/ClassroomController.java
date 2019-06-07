@@ -36,4 +36,12 @@ public class ClassroomController {
 		return service.deleteClassroom(classroomId);
 	}
 	
+	
+	@Path("/getAllClassroom")
+	@GET
+	@Produces({"application/json"})
+	public String getAllClassroom() {
+		return service.getAllClassroom();
+	}
+	
 }
