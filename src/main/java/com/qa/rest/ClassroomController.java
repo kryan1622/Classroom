@@ -25,8 +25,8 @@ public class ClassroomController {
 	@Path("/createClassroom")
 	@POST
 	@Produces({"application/json"})
-	public String createClassroom(String trainee) {
-		return service.createClassroom(trainee);
+	public String createClassroom(String classroom) {
+		return service.createClassroom(classroom);
 	}
 	
 	@Path("/deleteClassroom{classroomId}")

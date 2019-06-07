@@ -50,7 +50,7 @@ import com.qa.util.JSONUtil;
 		@Override
 		@Transactional(SUPPORTS)
 		public String getAllClassrooms() {
-			Query query = manager.createQuery("SELECT a FROM Classroom");
+			Query query = manager.createQuery("SELECT a FROM Classroom a");
 			return j1.getJSONForObject(query.getResultList());
 		}
 		
