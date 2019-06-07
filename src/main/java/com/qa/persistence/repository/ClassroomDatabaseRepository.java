@@ -7,7 +7,7 @@ package com.qa.persistence.repository;
 	import javax.persistence.PersistenceContext;
 	import javax.transaction.Transactional;
 	import com.qa.persistance.domain.Classroom;
-    import com.qa.util.JSONUtil;
+import com.qa.util.JSONUtil;
 
 
 	@Transactional(SUPPORTS)
@@ -32,6 +32,19 @@ package com.qa.persistence.repository;
 	        manager.persist(aClassroom);
 	        return "{\"message\": \"Classroom has been successfully added\"}";	
 		}
+		
+		@Override 
+		@Transactional(REQUIRED)
+		public String deleteClassroom(int classroomId) {
+			Classroom classroom = manager.find(Classroom.class, classroomId);
 
-	}
+	        if (manager.contains(classroom)) {
+	            manager.remove(classroom);
+	            return "{\"message\": \"Account sucessfully deleted " + classroomId + " \"}";
+	        }
+	        return "{\"message\": \"No account found with this id.\"}";
+		}
+		}
+
+	
 

@@ -22,4 +22,10 @@ public class ClassroomServiceImpl implements ClassroomService{
 		
 
 }
+
+
+	@Override
+	public String deleteClassroom(int classroomId) {
+	return repo.deleteClassroom(classroomId);
+}
 }

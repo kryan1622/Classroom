@@ -2,6 +2,8 @@ package com.qa.persistence.repository;
 import javax.transaction.Transactional;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import com.qa.persistance.domain.Classroom;
 import com.qa.persistance.domain.Trainee;
 import com.qa.util.JSONUtil;
 import javax.inject.Inject;
@@ -29,6 +31,18 @@ public class TraineeDatabaseRepository implements TraineeRepository{
     Trainee aTrainee = j1.getObjectForJSON(trainee, Trainee.class);
     manager.persist(aTrainee);
     return "{\"message\": \"Trainee has been successfully added\"}";
+	}
+	
+	@Override 
+	@Transactional(REQUIRED)
+	public String deleteTrainee(int traineeId) {
+		Trainee trainee = manager.find(Trainee.class, traineeId);
+
+        if (manager.contains(trainee)) {
+            manager.remove(trainee);
+            return "{\"message\": \"Account sucessfully deleted " + traineeId + " \"}";
+        }
+        return "{\"message\": \"No account found with this id.\"}";
 	}
 		
 }

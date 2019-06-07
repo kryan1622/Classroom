@@ -1,5 +1,6 @@
 package com.qa.rest;
 import javax.inject.Inject;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,10 +22,18 @@ public class ClassroomController {
 		return service.findClassroom(classroomId);
 	}
 	
-	@Path("/createTrainee")
+	@Path("/createClassroom")
 	@POST
 	@Produces({"application/json"})
 	public String createClassroom(String trainee) {
 		return service.createClassroom(trainee);
 	}
+	
+	@Path("/deleteClassroom{classroomId}")
+	@DELETE
+	@Produces({"application/json"})
+	public String deleteClassroom(@PathParam("classroomId") int classroomId) {
+		return service.deleteClassroom(classroomId);
+	}
+	
 }
